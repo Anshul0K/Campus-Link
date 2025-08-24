@@ -109,7 +109,7 @@ const getAllOpportunities = async (req, res) => {
 // Get opportunities created by the logged-in user
 const getMyOpportunities = async (req, res) => {
   try {
-    const opportunities = await Opportunity.find({ createdBy: req.user.id });
+    const opportunities = await Opportunity.find({ postedBy: req.user.id });
     res.json(opportunities);
   } catch (err) {
     res.status(500).json({ message: "Server Error", error: err.message });
@@ -134,14 +134,14 @@ const deleteOpportunity = async (req, res) => {
     if (!opportunity) return res.status(404).json({ message: "Opportunity not found" });
 
     // Only admin or creator can delete
-    if (req.user.role !== "admin" && opportunity.createdBy.toString() !== req.user.id) {
+    if (req.user.role !== "admin" && opportunity.postedBy.toString() !== req.user.id) {
       return res.status(403).json({ message: "Not authorized to delete" });
     }
 
     await opportunity.remove();
 
     // Remove from creator's opportunitiesCreated list
-    await User.findByIdAndUpdate(opportunity.createdBy, {
+    await User.findByIdAndUpdate(opportunity.postedBy, {
       $pull: { opportunitiesCreated: opportunity._id },
     });
 
@@ -149,7 +149,7 @@ const deleteOpportunity = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: "Server Error", error: err.message });
   }
-};
+}
 
 // Count of approved opportunities posted this month
 const opportunitiesThisMonth = async (req, res) => {

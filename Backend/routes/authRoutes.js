@@ -13,6 +13,6 @@ router.post("/register-admin", registerAdmin);
 // Login (both user & admin)
 router.post("/login", login);
 
-router.get("/stats/this-month", protect, adminOnly, usersRegisteredThisMonth);
+router.get("/stats/this-month", protect, usersRegisteredThisMonth);
 
 module.exports = router;
