@@ -2,7 +2,7 @@
 
 **Campus Link** is a web application designed for NSUT students to discover, post, and apply to various opportunities such as internships, workshops, and events. It provides a seamless interface for both students and admins to manage and track opportunities.
 
-**Hosted Link:** [Campus Link Live](https://your-hosted-link.com)  
+**Hosted Link:** [Campus Link Live](https://linkcampus.vercel.app/)  
 
 ---
 
