@@ -12,10 +12,8 @@
 - [Screenshots](#screenshots)  
 - [Tech Stack](#tech-stack)  
 - [Installation](#installation)  
-- [Folder Structure](#folder-structure)  
 - [Usage](#usage)  
 - [Contribution](#contribution)  
-- [License](#license)  
 
 ---
 
@@ -69,7 +67,7 @@
 ## Installation
 
 # Clone the repository
-git clone https://github.com/your-username/campus-link.git
+git clone https://github.com/Anshul0K/Campus-Link
 cd campus-link
 
 # Install dependencies
