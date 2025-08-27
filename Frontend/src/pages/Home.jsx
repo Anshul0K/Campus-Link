@@ -23,13 +23,13 @@ const Home = () => {
         <div className="flex flex-col md:flex-row gap-4 md:gap-6">
           <button
             onClick={() => setShowLogin(true)}
-            className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 font-semibold shadow-lg hover:shadow-xl"
+            className="px-8 py-3 bg-blue-600 cursor-pointer text-white rounded-lg hover:bg-blue-700 transition duration-300 font-semibold shadow-lg hover:shadow-xl"
           >
             Login
           </button>
           <button
             onClick={() => setShowRegister(true)}
-            className="px-8 py-3 bg-white text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-100 transition duration-300 font-semibold shadow-lg hover:shadow-xl"
+            className="px-8 py-3 bg-white text-blue-600 border border-blue-600 rounded-lg cursor-pointer hover:bg-blue-100 transition duration-300 font-semibold shadow-lg hover:shadow-xl"
           >
             Register
           </button>
