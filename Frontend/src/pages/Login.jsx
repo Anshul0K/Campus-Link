@@ -90,7 +90,7 @@ import { useNavigate } from "react-router-dom";
           <button
             type="submit"
             disabled={loading}
-            className="mt-2 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition duration-300 shadow-md"
+            className="mt-2 py-2 bg-blue-600 text-white font-semibold rounded-xl cursor-pointer hover:bg-blue-700 transition duration-300 shadow-md"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
