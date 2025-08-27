@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { logout, getCurrentUser } from "../services/authService";
 import no_bg_logo from "../assets/no_bg_logo.png"; // make sure this file exists
+import AddAdminModal from "../components/AddAdminModal"; // adjust path if needed
 
 const AdminNavbar = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const user = getCurrentUser();
   const [showProfile, setShowProfile] = useState(false);
@@ -19,7 +21,7 @@ const AdminNavbar = () => {
       {/* Left: Logo + Dashboard title */}
       <div
         className="flex items-center gap-5 cursor-pointer"
-        onClick={() => navigate("/admin-dashboard")}
+        onClick={() => navigate("/admin/dashboard")}
       >
         <img src={no_bg_logo} alt="Logo" className="h-10 object-contain" />
         <span className="text-xl font-bold">Admin Dashboard</span>
@@ -27,20 +29,30 @@ const AdminNavbar = () => {
 
       {/* Right: Nav items */}
       <div className="flex items-center gap-6">
-        <button onClick={() => navigate("/admin/opportunities")} className="hover:underline">
+        <button onClick={() => navigate("/admin/opportunities")} className="hover:underline cursor-pointer">
           All Opportunities
         </button>
-        <button onClick={() => navigate("/admin/pending-opportunities")} className="hover:underline">
+        <button onClick={() => navigate("/admin/pending-opportunities")} className="hover:underline cursor-pointer">
           Pending Opportunities
         </button>
-        <button onClick={() => navigate("/admin/users")} className="hover:underline">
+        <button onClick={() => navigate("/admin/users")} className="hover:underline cursor-pointer">
           All Users
         </button>
-        <button onClick={() => navigate("/admin/add-admin")} className="hover:underline">
+        
+
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="hover:underline cursor-pointer"
+        >
           Add Admin
         </button>
 
-        <button onClick={() => navigate("/my-opportunities")} className="hover:underline">
+        {/* Render modal only if isModalOpen is true */}
+        {isModalOpen && (
+          <AddAdminModal onClose={() => setIsModalOpen(false)} />
+        )}
+
+        <button onClick={() => navigate("/admin/my-opportunities")} className="hover:underline cursor-pointer">
           My Opportunities
         </button>
 
@@ -64,7 +76,7 @@ const AdminNavbar = () => {
         </div>
 
         {/* Logout */}
-        <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded-md">
+        <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded-md cursor-pointer">
           Logout
         </button>
       </div>

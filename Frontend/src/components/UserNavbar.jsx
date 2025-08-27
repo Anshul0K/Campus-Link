@@ -17,27 +17,28 @@ const UserNavbar = () => {
   return (
     <nav className="bg-blue-400 text-white px-6 py-4 flex justify-between items-center shadow-md">
       {/* Left: Logo */}
-      <div className="cursor-pointer flex items-center" onClick={() => navigate("/user-dashboard")}>
+      <div className="cursor-pointer flex items-center" onClick={() => navigate("/user/dashboard")}>
         <img src={noBgLogo} alt="Logo" className="h-10 object-contain mr-2" />
+        <h1 className="text-white text-xl font-bold">Dashboard</h1>
       </div>
 
       {/* Right: Nav Items */}
       <div className="flex items-center space-x-6">
         <button
-          className="hover:underline"
-          onClick={() => navigate("/opportunities")}
+          className="hover:underline cursor-pointer"
+          onClick={() => navigate("/user/opportunities")}
         >
           All Opportunities
         </button>
         <button
-          className="hover:underline"
-          onClick={() => navigate("/my-opportunities")}
+          className="hover:underline cursor-pointer"
+          onClick={() => navigate("/user/my-opportunities")}
         >
           My Opportunities
         </button>
         <button
-          className="hover:underline"
-          onClick={() => navigate("/applied-opportunities")}
+          className="hover:underline cursor-pointer"
+          onClick={() => navigate("/user/applied-opportunities")}
         >
           Applied Opportunities
         </button>
@@ -62,7 +63,7 @@ const UserNavbar = () => {
         {/* Logout Button */}
         <button
           onClick={handleLogout}
-          className="ml-4 bg-red-500 px-3 py-1 rounded hover:bg-red-600"
+          className="ml-4 bg-red-500 px-3 py-1 rounded hover:bg-red-600 cursor-pointer"
         >
           Logout
         </button>

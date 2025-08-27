@@ -1,6 +1,7 @@
 const express = require("express");
 const { protect, adminOnly } = require("../middlewares/authMiddleware");
-const { registerUser, registerAdmin, login, usersRegisteredThisMonth } = require("../controllers/authController");
+const { registerUser, registerAdmin, login, usersRegisteredThisMonth, getAllUsers,
+  deleteUser } = require("../controllers/authController");
 
 const router = express.Router();
 
@@ -14,5 +15,8 @@ router.post("/register-admin", registerAdmin);
 router.post("/login", login);
 
 router.get("/stats/this-month", protect, usersRegisteredThisMonth);
+
+router.get("/all-users", protect, adminOnly, getAllUsers); // only admin
+router.delete("/user/:id", protect, adminOnly, deleteUser); // only admin
 
 module.exports = router;

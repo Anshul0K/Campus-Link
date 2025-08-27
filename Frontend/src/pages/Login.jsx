@@ -31,9 +31,9 @@ import { useNavigate } from "react-router-dom";
 
       // Redirect based on role
       if (data.role === "admin") {
-        navigate("/admin-dashboard");
+        navigate("/admin/dashboard");
       } else {
-        navigate("/user-dashboard");
+        navigate("/user/dashboard");
       }
 
       onClose();

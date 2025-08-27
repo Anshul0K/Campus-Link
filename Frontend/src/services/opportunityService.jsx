@@ -89,3 +89,15 @@ export const applyToOpportunity = async (id) => {
     throw error.response?.data?.message || "Network error";
   }
 };
+
+
+
+// ------------------- GET ALL PENDING OPPORTUNITIES (Admin only) ------------------- //
+export const getAllPendingOpportunities = async () => {
+  try {
+    const { data } = await API.get("/opportunities/pending");
+    return data;
+  } catch (error) {
+    throw error.response?.data?.message || "Network error";
+  }
+};

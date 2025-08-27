@@ -64,3 +64,64 @@ export const getCurrentUser = () => {
     return null;
   }
 };
+
+export const addAdmin = async (adminData) => {
+  try {
+    const token = localStorage.getItem("token"); // get current admin token
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, // send token in headers
+      },
+    };
+
+    const { data } = await API.post("/auth/register-admin", adminData, config);
+    return data;
+  } catch (error) {
+    if (error.response?.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error("Network or server error");
+  }
+};
+
+
+// ------------------- GET ALL USERS (Admin) ------------------- //
+export const getAllUsers = async () => {
+  try {
+    const token = localStorage.getItem("token"); // get current admin token
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`, // send token in headers
+      },
+    };
+
+    const { data } = await API.get("/auth/all-users", config);
+    return data;
+  } catch (error) {
+    if (error.response?.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error("Network or server error");
+  }
+};
+
+// ------------------- DELETE USER (Admin) ------------------- //
+export const deleteUser = async (userId) => {
+  try {
+    const token = localStorage.getItem("token"); // get current admin token
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`, // send token in headers
+      },
+    };
+
+    const { data } = await API.delete(`/auth/user/${userId}`, config);
+    return data;
+  } catch (error) {
+    if (error.response?.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error("Network or server error");
+  }
+};

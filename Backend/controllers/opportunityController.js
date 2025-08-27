@@ -138,7 +138,8 @@ const deleteOpportunity = async (req, res) => {
       return res.status(403).json({ message: "Not authorized to delete" });
     }
 
-    await opportunity.remove();
+    // Use deleteOne instead of remove
+    await opportunity.deleteOne();
 
     // Remove from creator's opportunitiesCreated list
     await User.findByIdAndUpdate(opportunity.postedBy, {
@@ -149,7 +150,8 @@ const deleteOpportunity = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: "Server Error", error: err.message });
   }
-}
+};
+
 
 // Count of approved opportunities posted this month
 const opportunitiesThisMonth = async (req, res) => {
@@ -168,6 +170,17 @@ const opportunitiesThisMonth = async (req, res) => {
   }
 };
 
+// Get all pending opportunities (admin only)
+const getAllPending = async (req, res) => {
+  try {
+    const opportunities = await Opportunity.find({ status: "pending" }).populate("postedBy", "name email");
+    res.json(opportunities);
+  } catch (err) {
+    res.status(500).json({ message: "Server Error", error: err.message });
+  }
+};
+
+
 module.exports = {
   createOpportunity,
   updateOpportunity,
@@ -178,4 +191,5 @@ module.exports = {
   deleteOpportunity,
   opportunitiesThisMonth,
   applyToOpportunity,
+  getAllPending,
 };

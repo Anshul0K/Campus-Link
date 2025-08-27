@@ -11,6 +11,7 @@ const {
   deleteOpportunity,
   opportunitiesThisMonth,
   applyToOpportunity,
+  getAllPending,
 } = require("../controllers/opportunityController");
 const { protect, adminOnly } = require("../middlewares/authMiddleware");
 
@@ -42,6 +43,9 @@ router.get("/stats/this-month", protect, opportunitiesThisMonth);
 
 // Apply to an opportunity (any logged-in user)
 router.post("/:id/apply", protect, applyToOpportunity);
+
+// Get all pending opportunities (admin only)
+router.get("/pending", protect, adminOnly, getAllPending);
 
 
 module.exports = router;
