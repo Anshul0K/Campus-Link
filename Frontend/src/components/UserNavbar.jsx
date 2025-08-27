@@ -19,7 +19,7 @@ const UserNavbar = () => {
       {/* Left: Logo */}
       <div className="cursor-pointer flex items-center" onClick={() => navigate("/user/dashboard")}>
         <img src={noBgLogo} alt="Logo" className="h-10 object-contain mr-2" />
-        <h1 className="text-white text-xl font-bold">Dashboard</h1>
+        <h1 className="text-white text-xl font-bold hover:text-gray-200 hover:underline">Dashboard</h1>
       </div>
 
       {/* Right: Nav Items */}

@@ -24,7 +24,7 @@ const AdminNavbar = () => {
         onClick={() => navigate("/admin/dashboard")}
       >
         <img src={no_bg_logo} alt="Logo" className="h-10 object-contain" />
-        <span className="text-xl font-bold">Admin Dashboard</span>
+        <span className="text-xl font-bold hover:underline hover:text-gray-200">Admin Dashboard</span>
       </div>
 
       {/* Right: Nav items */}

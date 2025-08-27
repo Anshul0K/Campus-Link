@@ -43,7 +43,7 @@ const DashboardChart = ({ stats }) => {
     },
   };
 
-  return <Bar data={data} options={options} />;
+  return <Bar data={data} options={options}/>;
 };
 
 const AdminDashboard = () => {

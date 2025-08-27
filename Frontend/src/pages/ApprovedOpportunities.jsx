@@ -7,6 +7,9 @@ import {
   applyToOpportunity,
 } from "../services/opportunityService";
 
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const AllApprovedOpportunities = () => {
   const [opportunities, setOpportunities] = useState([]);
   const [appliedIds, setAppliedIds] = useState([]);
@@ -33,13 +36,18 @@ const AllApprovedOpportunities = () => {
     try {
       await applyToOpportunity(id);
       setAppliedIds((prev) => [...prev, id]); // mark as applied immediately
+      toast.success("Applied to opportunity!"); // success toast
     } catch (err) {
       console.error("Error applying to opportunity:", err);
+      toast.error("Failed to apply. Please try again."); // error toast
     }
   };
 
   return (
     <div className="p-6 flex flex-col items-center gap-6">
+      {/* Toast Container */}
+      <ToastContainer position="top-right" autoClose={3000} />
+
       <h1 className="text-2xl font-bold text-blue-700 mb-4">
         All Approved Opportunities
       </h1>
