@@ -10,7 +10,18 @@ const app = express();
 
 
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
+app.use(cors({
+  origin: function (origin, callback) {
+    // Check if the request origin is null (e.g., file:// protocol)
+    if (!origin) {
+      return callback(null, true);
+    }
+    // Allow the request if it comes from any origin
+    callback(null, true);
+  },
+  credentials: true,          
+}));
 app.use(express.urlencoded({ extended: true })); 
 
 app.get("/", (req, res) => {
