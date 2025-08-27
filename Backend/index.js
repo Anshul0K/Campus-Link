@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 
-app.use(express.json());
+
 //app.use(cors());
 app.use(cors({
   origin: function (origin, callback) {
@@ -22,7 +22,7 @@ app.use(cors({
   },
   credentials: true,          
 }));
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Campus Link Backend is running...");
